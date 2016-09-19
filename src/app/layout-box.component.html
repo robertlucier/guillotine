@@ -1,0 +1,29 @@
+<div>
+  <div class='container'>
+    <div class='box-builder'
+	 (dragover)="onDragOverHandler($event)"
+	 (drop)="dropRemoveHandler($event)"
+	 >
+      <box-resize
+	 [box]="newBox"
+	 [moveType]="'drag'"
+	 >
+	</box-resize>
+    </div>
+    <div class='layout-area'
+	 [style.width.px]="width"
+	 [style.height.px]="height"
+	 (dragover)="onDragOverHandler($event)"
+	 (drop)="dropAddHandler($event)"
+	 >
+      <box-resize
+	 *ngFor="let box of boxes"
+	 [box]="box"
+	 [showDimensions]="true"
+	 [moveType]="'drag'"
+	 (onResize)="recalcLayout($event)"
+	 >
+      </box-resize>
+    </div>
+  </div>
+</div>

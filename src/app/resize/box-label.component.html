@@ -1,0 +1,10 @@
+<span *ngIf="!isEditing"
+      [textContent]="text"
+      (click)="startEdit($event)"
+      >
+</span>
+<input *ngIf="isEditing"
+      [value]="text"
+       (blur)="textChangeHandler($event)"
+       (keyup.enter)="textChangeHandler($event)"
+       />

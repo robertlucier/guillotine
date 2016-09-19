@@ -1,0 +1,12 @@
+- min size - DONE
+- show dimensions (XxY) - DONE
+- click to change text - DONE
+  - add back dimensions - DONE
+- allow adding boxes - DONE
+- allow removing boxes - DONE
+- multiple pages if overflow
+ - or show overflow
+- improve guillotine algorithm
+- add icons to show drag, etc.
+- local storage of state
+- cleanup / flake (tslint?)
