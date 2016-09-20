@@ -17,7 +17,6 @@ import { APP_RESOLVER_PROVIDERS } from './app.resolver';
 import { AppState, InteralStateType } from './app.service';
 import { About } from './about';
 import { NoContent } from './no-content';
-import { XLarge } from './home/x-large';
 
 import { DragBoxComponent } from './drag.component.ts';
 import { LayoutBox } from './layout-box.component.ts';
@@ -45,7 +44,6 @@ type StoreType = {
     App,
     About,
     NoContent,
-    XLarge,
     DragBoxComponent,
     Resize,
       BoxResize,
