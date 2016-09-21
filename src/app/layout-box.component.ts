@@ -65,17 +65,18 @@ export class LayoutBox {
 	let boxes: Box[];
 	boxes = this.boxService.boxes;
 	this.sheets = this.lm.layoutSheet(boxes);
-	this.changeSheet(0);
+	this.setSheet(this.currentSheetIndex);
     }
 
-    changeSheet(inc: number) {
-	this.currentSheetIndex += inc;
+    setSheet(index: number) {
+	this.currentSheetIndex = index;
 	if (this.currentSheetIndex < 0) {
 	    this.currentSheetIndex = 0;
 	}
 	if (this.currentSheetIndex >= this.sheets.length) {
 	    this.currentSheetIndex = this.sheets.length - 1;
 	}
+	console.log('setSheet: currentIndex='+this.currentSheetIndex);
 	this.currentSheet = this.sheets[this.currentSheetIndex];
 	
     }

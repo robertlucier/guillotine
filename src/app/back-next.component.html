@@ -1,6 +1,8 @@
 <button
+   [disabled]="currentIndex == 0"
    (click)="change(-1)"
    >Back</button>
 <button
+   [disabled]="currentIndex >= (maxIndex-1)"
    (click)="change(1)"
    >Next</button>

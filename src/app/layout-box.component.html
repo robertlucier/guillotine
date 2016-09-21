@@ -28,7 +28,9 @@
       </div>
       <div class='page-controls'>
 	<back-next
-	   (increment)="changeSheet($event)"
+	   [currentIndex]="currentSheetIndex"
+	   [maxIndex]="sheets.length"
+	   (index)="setSheet($event)"
 	   ></back-next>
       </div>
     </div>
