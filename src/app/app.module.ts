@@ -21,7 +21,7 @@ import { NoContent } from './no-content';
 import { DragBoxComponent } from './drag.component.ts';
 import { LayoutBox } from './layout-box.component.ts';
 import { Resize, BoxResize, BoxLabel } from './resize';
-import { BoxService } from './box.service.ts';
+import { BoxService } from './shared/box.service.ts';
 
 // Application wide providers
 const APP_PROVIDERS = [

@@ -1,5 +1,5 @@
 import { Component, Input, Inject, Output, EventEmitter } from '@angular/core';
-import { Box } from '../box';
+import { Box } from '../shared/box';
 
 export const BOX_DATA_TYPE = 'application/x-box-data';
 

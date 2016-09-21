@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Box } from '../box';
+import { Box } from '../shared/box';
 
 @Component({
     selector: 'resize',

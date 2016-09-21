@@ -1,6 +1,6 @@
 import { Component, ViewEncapsulation } from '@angular/core';
-import { Box } from './box.ts';
-import { BoxService } from './box.service.ts';
+import { Box } from './shared/box.ts';
+import { BoxService } from './shared/box.service.ts';
 
 @Component({
     selector: 'drag',

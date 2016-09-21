@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
-import { LayoutManager } from './layout_manager';
-import { Box } from './box.ts';
-import { BoxService } from './box.service.ts';
+import { LayoutManager } from './shared/layout-calculator.service';
+import { Box } from './shared/box.ts';
+import { BoxService } from './shared/box.service.ts';
 import { BOX_DATA_TYPE } from './resize/box-resize.component';
 
 @Component( {
