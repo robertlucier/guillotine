@@ -4,9 +4,11 @@
   - add back dimensions - DONE
 - allow adding boxes - DONE
 - allow removing boxes - DONE
-- multiple pages if overflow
- - or show overflow
-- improve guillotine algorithm
+- multiple pages if overflow - DONE
+- better colors
+- better box staging area
+- move back/next controls and style
 - add icons to show drag, etc.
 - local storage of state
+- improve guillotine algorithm
 - cleanup / flake (tslint?)
