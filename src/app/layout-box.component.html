@@ -17,11 +17,11 @@
 	 (drop)="dropAddHandler($event)"
 	 >
       <box-resize
-	 *ngFor="let box of boxes"
+	 *ngFor="let box of currentSheet.boxes"
 	 [box]="box"
 	 [showDimensions]="true"
 	 [moveType]="'drag'"
-	 (onResize)="recalcLayout($event)"
+	 (onResize)="recalcLayout()"
 	 >
       </box-resize>
     </div>

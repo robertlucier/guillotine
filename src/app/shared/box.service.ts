@@ -12,7 +12,7 @@ export class BoxService {
 	this.nextId=100;
     }
     
-    getBoxes(): Box[] {
+    get boxes(): Box[] {
 	let box: Box;
 	if ( !this._boxes ) {
 	    this._boxes = [];
@@ -34,5 +34,21 @@ export class BoxService {
 	box.id = `${this.nextId}`;
 	this.nextId += 1;
 	return box;
+    }
+    
+    addBox(newBox: Box) {
+	this._boxes.push(newBox);
+
+    }
+    
+    removeById(id: string) {
+	let ix: any;
+	let box: Box;
+	for (ix in this._boxes) {
+	    box = this._boxes[ix];
+	    if (box.id == id) {
+		this._boxes.splice(ix, 1);
+	    }
+	}
     }
 }

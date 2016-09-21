@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
-import { LayoutManager } from './shared/layout-calculator.service';
+import { LayoutCalculator } from './shared/layout-calculator.service';
 import { Box } from './shared/box.ts';
+import { Sheet } from './shared/sheet.ts';
 import { BoxService } from './shared/box.service.ts';
 import { BOX_DATA_TYPE } from './resize/box-resize.component';
 
@@ -13,12 +14,12 @@ import { BOX_DATA_TYPE } from './resize/box-resize.component';
 })
 
 export class LayoutBox {
-    @Input() boxes: Box[];
     @Input() width: number;
     @Input() height: number;
-    lm: LayoutManager;
+    lm: LayoutCalculator;
     newBox: Box;
     boxService: BoxService;
+    currentSheet: Sheet;
 
     constructor(boxService: BoxService) {
 	this.boxService = boxService;
@@ -26,10 +27,8 @@ export class LayoutBox {
     }
 
     ngOnChanges() {
-	this.lm = new LayoutManager();
-	this.lm.pageWidth = this.width;
-	this.lm.pageHeight = this.height;
-	this.lm.layoutSheet(this.boxes);
+	this.lm = new LayoutCalculator(this.width, this.height);
+	this.recalcLayout()
     }
 
     /** allow left-box to be a drag-target */
@@ -44,9 +43,9 @@ export class LayoutBox {
 	console.log('drop handler: data=', data);
 	console.log('drop handler: obj=', data);
 	if (obj.id == this.newBox.id) {
-	    this.boxes.push(this.newBox);
+	    this.boxService.addBox(this.newBox);
 	    this.newBox = this.boxService.newBox(100, 100);
-	    this.lm.layoutSheet(this.boxes);
+	    this.recalcLayout();
 	}
 	//event.stopPropagation();
     }
@@ -57,18 +56,14 @@ export class LayoutBox {
 	let box: Box;
 	let data = event.dataTransfer.getData(BOX_DATA_TYPE);
 	let obj = JSON.parse(data);
-	for (ix in this.boxes) {
-	    box = this.boxes[ix];
-	    if (obj.id == box.id) {
-		this.newBox = box;
-		this.boxes.splice(ix, 1);
-	    }
-	    this.lm.layoutSheet(this.boxes);
-	}
+	this.boxService.removeById(obj.id);
+	this.recalcLayout();
     }
 
-    recalcLayout(changed: boolean) {
-	this.lm.layoutSheet(this.boxes);
+    recalcLayout() {
+	let boxes: Box[];
+	console.log('recalcLayout');
+	boxes = this.boxService.boxes;
+	this.currentSheet = this.lm.layoutSheet(boxes);
     }
-
 }

@@ -1,30 +1,21 @@
-import { Box } from './box.ts';
+import { Box } from './box';
+import { Shelf } from './shelf';
+import { Sheet } from './sheet';
 
-class Shelf {
-    width: number;
-    height: number;
-    leftPos: number = 0;
-    boxes: Box[];
 
-    get w_remaining() {
-	return this.width - this.leftPos;
-    }
-}
-
-class Sheet {
-    width: number;
-    height: number;
-    hRemaining: number;
-    shelves: Shelf[];
-}
-
-export class LayoutManager {
+export class LayoutCalculator {
     pageWidth: number;
     pageHeight: number;
+
+    constructor(pageWidth: number, pageHeight: number) {
+	this.pageWidth = pageWidth;
+	this.pageHeight = pageHeight;
+    }
 
     /** set left/top position on boxes */
     layoutSheet(boxes: Box[]) {
 	let remaining: Box[] = boxes.slice();
+	let sheet: Sheet = new Sheet(this.pageWidth, this.pageHeight);
 	// sort by height, desc
 	remaining.sort((b1, b2) => (b2.height - b1.height));
 	let h: number = 0;
@@ -39,21 +30,14 @@ export class LayoutManager {
 		if (box.height > (this.pageHeight - h)) {
 		    break;
 		}
-		shelf = this.new_shelf(box.height);
+		shelf = new Shelf(this.pageWidth, box.height);
 	    }
-	    shelf.boxes.push(box);
+	    sheet.boxes.push(box);
 	    box.left = shelf.leftPos;
 	    box.top = h;
 	    shelf.leftPos += box.width;
 	}
-	return remaining;
+	return sheet;
     }
 
-    new_shelf(height): Shelf {
-	let shelf: Shelf = new Shelf();
-	shelf.width = this.pageWidth;
-	shelf.height = height;
-	shelf.boxes = [];
-	return shelf;
-    }
 }
