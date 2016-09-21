@@ -7,6 +7,9 @@
       <box-resize
 	 [box]="newBox"
 	 [moveType]="'drag'"
+	 [maxWidth]="width"
+	 [maxHeight]="height"
+	 [showDimensions]="true"
 	 >
 	</box-resize>
     </div>
@@ -22,6 +25,8 @@
 	   [box]="box"
 	   [showDimensions]="true"
 	   [moveType]="'drag'"
+	   [maxWidth]="width"
+	   [maxHeight]="height"
 	   (onResize)="recalcLayout()"
 	   >
 	</box-resize>

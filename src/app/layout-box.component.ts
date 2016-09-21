@@ -3,7 +3,7 @@ import { LayoutCalculator } from './shared/layout-calculator.service';
 import { Box } from './shared/box.ts';
 import { Sheet } from './shared/sheet.ts';
 import { BoxService } from './shared/box.service.ts';
-import { BOX_DATA_TYPE } from './resize/box-resize.component';
+import { boxDataType } from './resize/box-resize.component';
 
 @Component( {
     selector: 'layout-box',
@@ -40,7 +40,7 @@ export class LayoutBox {
 
     /** handle drop from new-box on the left */
     dropAddHandler(event: DragEvent) {
-	let data = event.dataTransfer.getData(BOX_DATA_TYPE);
+	let data = event.dataTransfer.getData(boxDataType);
 	let obj = JSON.parse(data);
 	console.log('drop handler: data=', data);
 	console.log('drop handler: obj=', data);
@@ -55,7 +55,7 @@ export class LayoutBox {
     dropRemoveHandler(event: DragEvent) {
 	let ix: any;
 	let box: Box;
-	let data = event.dataTransfer.getData(BOX_DATA_TYPE);
+	let data = event.dataTransfer.getData(boxDataType);
 	let obj = JSON.parse(data);
 	this.boxService.removeById(obj.id);
 	this.recalcLayout();

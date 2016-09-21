@@ -1,7 +1,7 @@
 import { Component, Input, Inject, Output, EventEmitter } from '@angular/core';
 import { Box } from '../shared/box';
 
-export const BOX_DATA_TYPE = 'application/x-box-data';
+export const boxDataType = 'application/x-box-data';
 
 /** add missing setDragImage to DataTransfer interface */
 interface FullDataTransfer extends DataTransfer {
@@ -19,7 +19,10 @@ interface FullDataTransfer extends DataTransfer {
 export class BoxResize {
     @Input() box: Box;
     @Input() showDimensions = false;
-    @Input() minSize = 40;
+    @Input() minWidth = 40;
+    @Input() minHeight = 40;
+    @Input() maxWidth = 1000;
+    @Input() maxHeight = 1000;
     @Input() moveType = 'move';  /* move or drag */
     @Output() onResize = new EventEmitter<boolean>();
 
@@ -70,7 +73,7 @@ export class BoxResize {
 	this.lastX = event.x;
 	this.lastY = event.y;
 	let data = JSON.stringify(this.box);
-	event.dataTransfer.setData(BOX_DATA_TYPE, data);
+	event.dataTransfer.setData(boxDataType, data);
 	console.log('dragstart: data=' + data);
     }
 
@@ -80,6 +83,8 @@ export class BoxResize {
 	    let diffY = event.y - this.lastY;
 	    this.lastX = event.x;
 	    this.lastY = event.y;
+	    console.log('maxWidth='this.maxWidth);
+	    console.log('maxHeight='this.maxHeight);
 	    if (diffX || diffY) {
 		if (this.resizeType) {
 		    if (this.resizeType.includes('T')) {
@@ -96,8 +101,10 @@ export class BoxResize {
 		    if (this.resizeType.includes('R')) {
 			this.box.width += diffX;
 		    }
-		    this.box.width = Math.max(this.minSize, this.box.width);
-		    this.box.height = Math.max(this.minSize, this.box.height);
+		    this.box.width = Math.max(this.minWidth, this.box.width);
+		    this.box.height = Math.max(this.minHeight, this.box.height);
+		    this.box.width = Math.min(this.maxWidth, this.box.width);
+		    this.box.height = Math.min(this.maxHeight, this.box.height);
 		}
 		else if (this.moveType == 'move') {
 		    /* move */
