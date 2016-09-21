@@ -13,9 +13,11 @@ export class LayoutCalculator {
     }
 
     /** set left/top position on boxes */
-    layoutSheet(boxes: Box[]) {
+    layoutSheet(boxes: Box[]): Sheet[]  {
 	let remaining: Box[] = boxes.slice();
+	let sheets: Sheet[] = [];
 	let sheet: Sheet = new Sheet(this.pageWidth, this.pageHeight);
+	sheets.push(sheet);
 	// sort by height, desc
 	remaining.sort((b1, b2) => (b2.height - b1.height));
 	let h: number = 0;
@@ -28,7 +30,9 @@ export class LayoutCalculator {
 	    }
 	    if (shelf === null) {
 		if (box.height > (this.pageHeight - h)) {
-		    break;
+		    sheet = new Sheet(this.pageWidth, this.pageHeight);
+		    sheets.push(sheet);
+		    h = 0;
 		}
 		shelf = new Shelf(this.pageWidth, box.height);
 	    }
@@ -37,7 +41,7 @@ export class LayoutCalculator {
 	    box.top = h;
 	    shelf.leftPos += box.width;
 	}
-	return sheet;
+	return sheets;
     }
 
 }

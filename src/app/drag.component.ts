@@ -7,4 +7,5 @@ import { Component, ViewEncapsulation } from '@angular/core';
 
 export class DragBoxComponent {
     componentName: 'DragBoxComponent';
+
 }

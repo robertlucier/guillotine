@@ -19,7 +19,9 @@ export class LayoutBox {
     lm: LayoutCalculator;
     newBox: Box;
     boxService: BoxService;
+    currentSheetIndex: number = 0;
     currentSheet: Sheet;
+    sheets: Sheet[];
 
     constructor(boxService: BoxService) {
 	this.boxService = boxService;
@@ -47,7 +49,6 @@ export class LayoutBox {
 	    this.newBox = this.boxService.newBox(100, 100);
 	    this.recalcLayout();
 	}
-	//event.stopPropagation();
     }
 
     /** called on drop when dragging to left. remove item */
@@ -62,8 +63,20 @@ export class LayoutBox {
 
     recalcLayout() {
 	let boxes: Box[];
-	console.log('recalcLayout');
 	boxes = this.boxService.boxes;
-	this.currentSheet = this.lm.layoutSheet(boxes);
+	this.sheets = this.lm.layoutSheet(boxes);
+	this.changeSheet(0);
+    }
+
+    changeSheet(inc: number) {
+	this.currentSheetIndex += inc;
+	if (this.currentSheetIndex < 0) {
+	    this.currentSheetIndex = 0;
+	}
+	if (this.currentSheetIndex >= this.sheets.length) {
+	    this.currentSheetIndex = this.sheets.length - 1;
+	}
+	this.currentSheet = this.sheets[this.currentSheetIndex];
+	
     }
 }
