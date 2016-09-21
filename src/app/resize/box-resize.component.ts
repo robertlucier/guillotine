@@ -83,8 +83,6 @@ export class BoxResize {
 	    let diffY = event.y - this.lastY;
 	    this.lastX = event.x;
 	    this.lastY = event.y;
-	    console.log('maxWidth='this.maxWidth);
-	    console.log('maxHeight='this.maxHeight);
 	    if (diffX || diffY) {
 		if (this.resizeType) {
 		    if (this.resizeType.includes('T')) {
