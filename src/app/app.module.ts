@@ -22,6 +22,7 @@ import { DragBoxComponent } from './drag.component.ts';
 import { LayoutBox } from './layout-box.component.ts';
 import { Resize, BoxResize, BoxLabel } from './resize';
 import { BoxService } from './shared/box.service.ts';
+import { BackNextComponent } from './back-next.component.ts';
 
 // Application wide providers
 const APP_PROVIDERS = [
@@ -49,6 +50,7 @@ type StoreType = {
       BoxResize,
       LayoutBox,
       BoxLabel,
+      BackNextComponent,
   ],
   imports: [ // import Angular's modules
     BrowserModule,

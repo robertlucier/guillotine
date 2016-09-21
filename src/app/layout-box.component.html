@@ -10,27 +10,27 @@
 	 >
 	</box-resize>
     </div>
-    <div class='layout-area'
-	 [style.width.px]="width"
-	 [style.height.px]="height"
-	 (dragover)="onDragOverHandler($event)"
-	 (drop)="dropAddHandler($event)"
-	 >
-      <box-resize
-	 *ngFor="let box of currentSheet.boxes"
-	 [box]="box"
-	 [showDimensions]="true"
-	 [moveType]="'drag'"
-	 (onResize)="recalcLayout()"
-	 >
-      </box-resize>
+    <div>
+      <div class='layout-area'
+	   [style.width.px]="width"
+	   [style.height.px]="height"
+	   (dragover)="onDragOverHandler($event)"
+	   (drop)="dropAddHandler($event)"
+	   >
+	<box-resize
+	   *ngFor="let box of currentSheet.boxes"
+	   [box]="box"
+	   [showDimensions]="true"
+	   [moveType]="'drag'"
+	   (onResize)="recalcLayout()"
+	   >
+	</box-resize>
+      </div>
+      <div class='page-controls'>
+	<back-next
+	   (increment)="changeSheet($event)"
+	   ></back-next>
+      </div>
     </div>
   </div>
-  <a
-     (click)="changeSheet(-1)"
-     >Back</a>
-  <a
-     (click)="changeSheet(1)"
-     >Next</a>
-
 </div>
