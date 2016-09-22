@@ -6,6 +6,7 @@ export class Box {
     width: number;
     height: number;
     text: string;
+    css_color: string;
 
     constructor(width: number, height: number, text: string, left: number=0, top: number=0) {
 	this.width = width;
@@ -14,5 +15,6 @@ export class Box {
 	this.left = left;
 	this.top = top;
 	this.id = '';
+	this.css_color = '#999';
     }
 }

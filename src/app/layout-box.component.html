@@ -37,6 +37,9 @@
 	   [maxIndex]="sheets.length"
 	   (index)="setSheet($event)"
 	   ></back-next>
+	<span class='coverage-details'>
+	  Coverage: {{coverageRatio | percent:'.1-1'}}
+	</span>
       </div>
     </div>
   </div>

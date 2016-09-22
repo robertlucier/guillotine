@@ -80,4 +80,13 @@ export class LayoutBox {
 	this.currentSheet = this.sheets[this.currentSheetIndex];
 	
     }
+
+    get coverageRatio() {
+	let sheetArea = this.sheets.length * this.width * this.height;
+	let boxArea = 0;
+	for (let box of this.boxService.boxes) {
+	    boxArea += box.width * box.height;
+	}
+	return boxArea / sheetArea;
+    }
 }

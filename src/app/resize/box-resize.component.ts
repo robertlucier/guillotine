@@ -30,10 +30,8 @@ export class BoxResize {
     lastY: number;
     resizeType: string;
     EDGE_SIZE = 10;
-    areaColor: string;
 
     ngOnChanges() {
-	this.areaColor = this.calcAreaColor();
     }
 
     dragstartHandler(event: DragEvent) {
@@ -114,23 +112,10 @@ export class BoxResize {
     }
 
     dragEndHandler(event: DragEvent) {
-	this.areaColor = this.calcAreaColor();
 	this.onResize.emit(true);
 	this.lastX = null;
 	this.lastY = null;
 	this.resizeType = '';
-    }
-
-    /** set color based on area */
-    calcAreaColor() {
-	let red = 200;
-	let green = 255;
-	let blue = 60;
-	let area = this.box.width * this.box.height;
-	let factor = Math.min(1, area / (250*250));
-	green = 100 + Math.floor(155 * factor);
-	let colorstring = `rgb(${red},${green},${blue})`;
-	return colorstring;
     }
 
     /** return label for the box */

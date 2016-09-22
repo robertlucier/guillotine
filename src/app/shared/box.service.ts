@@ -19,6 +19,8 @@ export class BoxService {
 	    for (let boxSrc of BOXES) {
 		box = Object.assign({}, boxSrc);
 		box.id = `${this.nextId}`;
+		box.css_color = this.calculateBoxColor();
+		console.log('boxes: css_color: ' + box.css_color);
 		this.nextId += 1;
 		this._boxes.push(box);
 	    }
@@ -32,6 +34,8 @@ export class BoxService {
 	}
 	let box: Box = new Box(width, height, text);
 	box.id = `${this.nextId}`;
+	box.css_color = this.calculateBoxColor();
+	console.log('newBox: css_color: ' + box.css_color);
 	this.nextId += 1;
 	return box;
     }
@@ -51,4 +55,15 @@ export class BoxService {
 	    }
 	}
     }
+
+    /** set random box color */
+    protected calculateBoxColor() {
+	let red = 100 + (this.nextId % 3) * 50;
+	let green = 100;
+	let blue = 100 + (Math.floor(this.nextId / 3) % 3) * 50;
+	let colorstring = `rgb(${red},${green},${blue})`;
+	return colorstring;
+    }
+
+
 }
