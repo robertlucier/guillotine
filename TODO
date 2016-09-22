@@ -5,10 +5,14 @@
 - allow adding boxes - DONE
 - allow removing boxes - DONE
 - multiple pages if overflow - DONE
-- better colors
+- restrict max size of boxes - DONE
+- better colors - DONE
+- show coverage percent - DONE (had to add Intl to webpack / polyfill)
+- describe "About"
 - better box staging area
-- move back/next controls and style
 - add icons to show drag, etc.
 - local storage of state
 - improve guillotine algorithm
 - cleanup / flake (tslint?)
+
+- Allow manual vs automatic fitting and comparison of performance - like a game!
