@@ -47,10 +47,10 @@ type StoreType = {
     NoContent,
     DragBoxComponent,
     Resize,
-      BoxResize,
-      LayoutBox,
-      BoxLabel,
-      BackNextComponent,
+    BoxResize,
+    LayoutBox,
+    BoxLabel,
+    BackNextComponent,
   ],
   imports: [ // import Angular's modules
     BrowserModule,
@@ -61,8 +61,8 @@ type StoreType = {
   providers: [ // expose our Services and Providers into Angular's dependency injection
     ENV_PROVIDERS,
     APP_PROVIDERS,
-      BoxService,
-      BrowserDomAdapter,
+    BoxService,
+    BrowserDomAdapter,
   ]
 })
 export class AppModule {

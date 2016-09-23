@@ -12,8 +12,5 @@ export const ROUTES: Routes = [
   { path: 'drag',  component: DragBoxComponent },
   { path: 'resize',  component: Resize },
   { path: 'about', component: About },
-  {
-    path: 'detail', loadChildren: () => System.import('./+detail')
-  },
   { path: '**',    component: NoContent },
 ];
