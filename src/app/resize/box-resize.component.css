@@ -9,3 +9,28 @@
     position: absolute;
     font-size: 10px;
 }
+
+.box-move {
+    position: relative;
+    left: 15px;
+    top: 15px;
+    text-align: center;
+}
+
+.resize-icon {
+    position: absolute;
+    display: block;
+    bottom: 3px;
+    right: 3px;
+    font-size: 2em;
+    color: #cccccc;
+}
+
+.move-icon {
+    position: absolute;
+    display: block;
+    bottom: 3px;
+    right: 3px;
+    font-size: 2em;
+    color: #cccccc;
+}

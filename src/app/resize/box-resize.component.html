@@ -1,15 +1,33 @@
-<div class="box"
+<div class='box'
      draggable="true"
      (dragstart)="dragstartHandler($event)"
      (drag)="dragHandler($event)"
      (dragend)="dragEndHandler($event)"
+     (mouseenter)="mouseEnterHandler('resize')"
+     (mouseleave)="mouseLeaveHandler('resize')"
      [style.width.px]="box.width"
      [style.height.px]="box.height"
      [style.left.px]="box.left"
      [style.top.px]="box.top"
      [style.background-color]="box.css_color"
-     ><box-label
-	 [text]="box.text"
-	 (onTextChange)="box.text=$event"
-	 ></box-label> {{dimensionsLabel}}
+     >
+  <div class='box-move'
+       [style.width.px]="box.width-30"
+       [style.height.px]="box.height-30"
+       (mouseenter)="mouseEnterHandler('move')"
+       (mouseleave)="mouseLeaveHandler('move')"
+       >
+    <box-label
+       [text]="box.text"
+       (onTextChange)="box.text=$event"
+       ></box-label> {{dimensionsLabel}}
+  </div>
+  <i *ngIf="showResize"
+     class='resize-icon fa fa-compress'
+     >
+  </i>
+  <i *ngIf="showMove"
+     class='move-icon fa fa-arrows-alt'
+     >
+  </i>
 </div>

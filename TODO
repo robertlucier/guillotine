@@ -7,10 +7,12 @@
 - multiple pages if overflow - DONE
 - restrict max size of boxes - DONE
 - better colors - DONE
+- deploy to s3 - DONE
 - show coverage percent - DONE (had to add Intl to webpack / polyfill)
-- describe "About"
+- add icons to show drag, move. - DONE
 - better box staging area
-- add icons to show drag, etc.
+ - multiple boxes
+- describe "About"
 - local storage of state
 - improve guillotine algorithm
 - cleanup / flake (tslint?)

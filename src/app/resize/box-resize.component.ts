@@ -1,7 +1,8 @@
-import { Component, Input, Inject, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Inject, Output, EventEmitter, HostListener } from '@angular/core';
 import { Box } from '../shared/box';
 
 export const boxDataType = 'application/x-box-data';
+const edgeSize = 15;
 
 /** add missing setDragImage to DataTransfer interface */
 interface FullDataTransfer extends DataTransfer {
@@ -29,7 +30,8 @@ export class BoxResize {
     lastX: number;
     lastY: number;
     resizeType: string;
-    EDGE_SIZE = 10;
+    showResize: boolean = false;
+    showMove: boolean = false;
 
     ngOnChanges() {
     }
@@ -46,16 +48,16 @@ export class BoxResize {
 	console.log('objW='+objW);
 	console.log('(objW - offX):'+(objW - offX));
 	this.resizeType = '';
-	if ( (objW - offX) < this.EDGE_SIZE ) {
+	if ( (objW - offX) < edgeSize ) {
 	    this.resizeType += 'R';
 	}
-	if ( (objH - offY) < this.EDGE_SIZE ) {
+	if ( (objH - offY) < edgeSize ) {
 	    this.resizeType += 'B';
 	}
-	if ( offX < this.EDGE_SIZE ) {
+	if ( offX < edgeSize ) {
 	    this.resizeType += 'L';
 	}
-	if ( offY < this.EDGE_SIZE ) {
+	if ( offY < edgeSize ) {
 	    this.resizeType += 'T';
 	}
 	console.log('resizeType='+this.resizeType);
@@ -126,4 +128,27 @@ export class BoxResize {
 	return '';
     }
 
+    mouseEnterHandler(objtype: string) {
+	console.log('MOUSEENTER');
+	if (objtype == 'resize') {
+	    this.showResize = true;
+	    this.showMove = false;
+	}
+	else if (objtype == 'move') {
+	    this.showMove = true;
+	    this.showResize = false;
+	}
+    }
+
+    mouseLeaveHandler(objtype: string) {
+	console.log('MOUSELEAVE');
+	if (objtype == 'move') {
+	    this.showMove = false;
+	    this.showResize = true;
+	}
+	else if (objtype == 'resize') {
+	    this.showMove = false;
+	    this.showResize = false;
+	}
+    }
 }

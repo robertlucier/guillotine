@@ -7,7 +7,6 @@
 .layout-area {
     border: 1px solid;
     background-color: #cccccc;
-    margin-right: 20px;
     position: relative;
 }
 .box1 {
@@ -17,7 +16,7 @@
     position: absolute;
 }
 .box-builder {
-    width: 500px;
+    width: 400px;
     height: 500px;
     position: relative;
     background-color: #eeeeee;
@@ -29,4 +28,18 @@
 }
 .coverage-details {
     margin-left: 30px;
+}
+.icon-column {
+    display: flex;
+    align-items: center;
+    justify-direction: center;
+}
+.arrow-icon-container {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.arrow-icon {
+    display: block;
+    margin-top: -10px;
+    margin-bottom: -10px;
 }
