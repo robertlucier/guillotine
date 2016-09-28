@@ -129,7 +129,6 @@ export class BoxResize {
     }
 
     mouseEnterHandler(objtype: string) {
-	console.log('MOUSEENTER');
 	if (objtype == 'resize') {
 	    this.showResize = true;
 	    this.showMove = false;
@@ -141,7 +140,6 @@ export class BoxResize {
     }
 
     mouseLeaveHandler(objtype: string) {
-	console.log('MOUSELEAVE');
 	if (objtype == 'move') {
 	    this.showMove = false;
 	    this.showResize = true;
