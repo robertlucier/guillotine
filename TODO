@@ -10,9 +10,13 @@
 - deploy to s3 - DONE
 - show coverage percent - DONE (had to add Intl to webpack / polyfill)
 - add icons to show drag, move. - DONE
+- Give page a decent title - DONE
+- Nav CSS - DONE
+- Mobile resize for Layout
+- describe "About" - OK
 - better box staging area
  - multiple boxes
-- describe "About"
+- add trash icon and plus icon when adding/removing boxes
 - local storage of state
 - improve guillotine algorithm
 - cleanup / flake (tslint?)
