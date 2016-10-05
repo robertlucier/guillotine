@@ -20,5 +20,6 @@
 - local storage of state
 - improve guillotine algorithm
 - cleanup / flake (tslint?)
+- data (json) view of the layout items
 
 - Allow manual vs automatic fitting and comparison of performance - like a game!
